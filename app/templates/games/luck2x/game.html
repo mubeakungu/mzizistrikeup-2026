@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="lz-wrap">
+  <a href="{{ url_for('luck2x.lobby') }}">← All games</a>
+  <h1>{{ game.name }}</h1>
+  <p class="lz-muted">{{ game.description }}</p>
+  <div class="lz-panel">
+    <label>Bet (KES)<input id="bet" type="number" min="1" step="0.01" value="10"></label>
+    <div id="extra"></div>
+    <button id="play">Play</button>
+    <button id="claim" class="secondary" hidden>Claim</button>
+    <div id="status" class="lz-status">Ready.</div>
+    <div id="board"></div>
+  </div>
+</section>
+<script>window.LUCK2X_GAME={{ game.path|tojson }};</script>
+<script src="{{ url_for('static', filename='games/luck2x/games.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="lz-wrap">
+  <h1>Lucky2x Games</h1>
+  <p class="lz-muted">Seven Luck2x-style games integrated into Mzizibet.</p>
+  <div class="lz-grid">
+    {% for g in games %}
+      <a class="lz-card" href="{{ url_for('luck2x.game_page', game=g.path) }}">
+        <div class="lz-icon">{{ {'crash':'🚀','mines':'💣','tower':'🏰','dice':'🎲','battle':'⚔️','wheel':'🎡','hilo':'🃏'}.get(g.path,'🎮') }}</div>
+        <h2>{{ g.name }}</h2><p>{{ g.description }}</p>
+      </a>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}
